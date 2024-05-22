@@ -1,4 +1,4 @@
 {
-  "mojo.modularHomePath": "/root/.modular",
+  "mojo.modularHomePath": "${env:MODULAR_HOME}",
   "workbench.colorTheme": "Atom One Dark"
 }
