@@ -1,0 +1,34 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
+{
+	"name": "iFEM NGSolve",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"hostRequirements": {
+		"cpus": 4
+	},
+	// "remoteUser": "codespace",
+	// "containerUser": "codespace",
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			// // Set *default* container specific settings.json values on container create.
+			// "settings": {
+			// 	"python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
+			"python.defaultInterpreterPath": "/usr/bin/python3",
+			"extensions": [
+				"akamud.vscode-theme-onedark",
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"ms-vscode.cpptools",
+				"GitHub.vscode-pull-request-github"
+			]
+		}
+	},
+	// https://github.com/microsoft/vscode-remote-release/issues/3527#issuecomment-674739457
+	// postCreateCommand runs in the workspace folder
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
+}
