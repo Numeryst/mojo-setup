@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN apt-get update && apt-get install wget -y && apt install git -y
+RUN apt-get update && apt-get install wget -y && apt-get install curl -y && apt install git -y
 
 # Download and install Miniconda
 ENV MINICONDA_VERSION=latest
