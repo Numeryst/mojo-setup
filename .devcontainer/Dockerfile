@@ -45,7 +45,7 @@ RUN MOJO_PATH=$(modular config mojo.path) \
 
 
 # # Activate the ngsolve environment
-# SHELL ["/bin/bash", "--login", "-c"]
+SHELL ["/bin/bash", "--login", "-c"]
 ENV CONDA_PREFIX /opt/conda/envs/mojolang
 ENV PATH $CONDA_PREFIX/bin:$PATH
 
