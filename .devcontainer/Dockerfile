@@ -15,7 +15,7 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}-Lin
 ENV PATH /opt/conda/bin:$PATH
 
 # Create conda environment named "mojolang"
-RUN conda create -n mojolang python=3.9 -y
+RUN conda create -n mojolang python=3.10 -y
 
 RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
 
