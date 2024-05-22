@@ -1,1 +1,1 @@
-conda activate mojolang
+# File to put your post create commands
