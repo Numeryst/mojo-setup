@@ -13,7 +13,6 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			"settings": {
 			"extensions": [
 				"modular-mojotools.vscode-mojo",
 				"akamud.vscode-theme-onedark",
@@ -27,5 +26,4 @@
 	// https://github.com/microsoft/vscode-remote-release/issues/3527#issuecomment-674739457
 	// postCreateCommand runs in the workspace folder
 	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
-	}
 }
