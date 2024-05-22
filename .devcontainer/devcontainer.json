@@ -20,7 +20,7 @@
 			// 	"python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
 			"python.defaultInterpreterPath": "/usr/bin/python3",
 			"extensions": [
-				"modular-mojotools.vscode-mojo-nightly",
+				"modular-mojotools.vscode-mojo",
 				"akamud.vscode-theme-onedark",
 				"ms-python.python",
 				"ms-toolsai.jupyter",
