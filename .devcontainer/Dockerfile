@@ -2,15 +2,9 @@ FROM ubuntu
 
 SHELL ["/bin/bash", "--login", "-c"]
 
+# Specify your conda environment for Mojo programming language 
 ARG conda_env_name=mojolang
-
-# # Add a new user with your Github username
-# ARG USERNAME=Numeryst
-# ARG USER_UID=1000
-# ARG USER_GID=$USER_UID
-
-# RUN groupadd --gid $USER_GID $USERNAME \
-#     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+ARG git_repo_name=mojo-setup
 
 RUN apt-get update && apt-get install wget -y && apt-get install curl -y && apt install git -y
 
@@ -29,16 +23,11 @@ ENV PATH /opt/conda/bin:$PATH
 # Create conda environment named ${conda_env_name}
 RUN conda create -n ${conda_env_name} python=3.10 -y
 
-# RUN conda run -n ${conda_env_name} pip install jupyter numpy scipy matplotlib ipykernel
-
+# Install mojo
 RUN curl -s https://get.modular.com | sh -
 RUN conda run -n ${conda_env_name} modular install mojo
 
-# ENV MOJO_PATH=$(modular config mojo.path)
-# RUN BASHRC=$( [ -f "$HOME/.bash_profile" ] && echo "$HOME/.bash_profile" || echo "$HOME/.bashrc" ) \
-#   && echo 'export MODULAR_HOME="'$HOME'/.modular"' >> "$BASHRC" \
-#   && echo 'export PATH="'$MOJO_PATH'/bin:$PATH"' >> "$BASHRC" \
-#   && source "$BASHRC"
+# Configure mojo after installation
 RUN MOJO_PATH=$(modular config mojo.path) \
   && BASHRC=$( [ -f "$HOME/.bash_profile" ] && echo "$HOME/.bash_profile" || echo "$HOME/.bashrc" ) \
   && echo 'export MODULAR_HOME="'$HOME'/.modular"' >> "$BASHRC" \
@@ -46,15 +35,13 @@ RUN MOJO_PATH=$(modular config mojo.path) \
   && source "$BASHRC"
 
 
-# # Activate the ngsolve environment
-# SHELL ["/bin/bash", "--login", "-c"]
+# Activate the ${conda_env_name} environment
 ENV CONDA_PREFIX /opt/conda/envs/${conda_env_name}
 ENV PATH $CONDA_PREFIX/bin:$PATH
 RUN echo "conda activate ${conda_env_name}" >> ~/.bashrc
-# CMD ["/bin/bash"]
 
 ## Install any additional packages you need in the ${conda_env_name} environment
 # RUN conda install -n ${conda_env_name} <package1> <package2> ... -y
 
 # Set the working directory
-WORKDIR /workspaces/mojo-setup
+WORKDIR /workspaces/${git_repo_name}
