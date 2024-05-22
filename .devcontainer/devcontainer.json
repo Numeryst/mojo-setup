@@ -8,17 +8,12 @@
 	"hostRequirements": {
 		"cpus": 4
 	},
-	// "remoteUser": "codespace",
-	// "containerUser": "Numeryst",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
-			// // Set *default* container specific settings.json values on container create.
-			// "settings": {
-			// 	"python.defaultInterpreterPath": "/home/codespace/.python/current/bin/python3",
-			"python.defaultInterpreterPath": "/usr/bin/python3",
+			"settings": {
 			"extensions": [
 				"modular-mojotools.vscode-mojo",
 				"akamud.vscode-theme-onedark",
@@ -32,4 +27,5 @@
 	// https://github.com/microsoft/vscode-remote-release/issues/3527#issuecomment-674739457
 	// postCreateCommand runs in the workspace folder
 	"postCreateCommand": "./.devcontainer/postCreateCommand.sh"
+	}
 }
