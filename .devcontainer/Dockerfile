@@ -1,5 +1,7 @@
 FROM ubuntu
 
+SHELL ["/bin/bash", "--login", "-c"]
+
 RUN apt-get update && apt-get install wget -y && apt-get install curl -y && apt install git -y
 
 # Download and install Miniconda
