@@ -2,13 +2,13 @@ FROM ubuntu
 
 SHELL ["/bin/bash", "--login", "-c"]
 
-# Add a new user with your Github username
-ARG USERNAME=Numeryst
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
+# # Add a new user with your Github username
+# ARG USERNAME=Numeryst
+# ARG USER_UID=1000
+# ARG USER_GID=$USER_UID
 
-RUN groupadd --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+# RUN groupadd --gid $USER_GID $USERNAME \
+#     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 RUN apt-get update && apt-get install wget -y && apt-get install curl -y && apt install git -y
 
