@@ -19,6 +19,16 @@ RUN conda create -n mojolang python=3.10 -y
 
 RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
 
+RUN curl -s https://get.modular.com | sh -
+RUN conda run -n mojolang modular install mojo
+RUN conda run -n mojolang modular install nightly/mojo
+
+ENV MOJO_PATH=$(modular config mojo.path)
+RUN BASHRC=$( [ -f "$HOME/.bash_profile" ] && echo "$HOME/.bash_profile" || echo "$HOME/.bashrc" ) \
+  && echo 'export MODULAR_HOME="'$HOME'/.modular"' >> "$BASHRC" \
+  && echo 'export PATH="'$MOJO_PATH'/bin:$PATH"' >> "$BASHRC" \
+  && source "$BASHRC"
+
 # # Activate the ngsolve environment
 # SHELL ["/bin/bash", "--login", "-c"]
 # ENV CONDA_PREFIX /opt/conda/envs/mojolang
