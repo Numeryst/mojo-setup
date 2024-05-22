@@ -45,9 +45,11 @@ RUN MOJO_PATH=$(modular config mojo.path) \
 
 
 # # Activate the ngsolve environment
-SHELL ["/bin/bash", "--login", "-c"]
+# SHELL ["/bin/bash", "--login", "-c"]
 ENV CONDA_PREFIX /opt/conda/envs/mojolang
 ENV PATH $CONDA_PREFIX/bin:$PATH
+RUN echo "conda activate mojolang" >> ~/.bashrc
+# CMD ["/bin/bash"]
 
 ## Install any additional packages you need in the mojolang environment
 # RUN conda install -n mojolang <package1> <package2> ... -y
