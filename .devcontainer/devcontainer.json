@@ -9,7 +9,7 @@
 		"cpus": 4
 	},
 	// "remoteUser": "codespace",
-	"containerUser": "Numeryst",
+	// "containerUser": "Numeryst",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Configure tool-specific properties.
