@@ -17,7 +17,7 @@ ENV PATH /opt/conda/bin:$PATH
 # Create conda environment named "mojolang"
 RUN conda create -n mojolang python=3.10 -y
 
-RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
+# RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
 
 RUN curl -s https://get.modular.com | sh -
 RUN conda run -n mojolang modular auth && modular install nightly/mojo
