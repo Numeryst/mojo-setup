@@ -2,6 +2,8 @@ FROM ubuntu
 
 SHELL ["/bin/bash", "--login", "-c"]
 
+ARG conda_env_name=mojolang
+
 # # Add a new user with your Github username
 # ARG USERNAME=Numeryst
 # ARG USER_UID=1000
@@ -24,13 +26,13 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}-Lin
 # Set path to conda
 ENV PATH /opt/conda/bin:$PATH
 
-# Create conda environment named "mojolang"
-RUN conda create -n mojolang python=3.10 -y
+# Create conda environment named ${conda_env_name}
+RUN conda create -n ${conda_env_name} python=3.10 -y
 
-# RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
+# RUN conda run -n ${conda_env_name} pip install jupyter numpy scipy matplotlib ipykernel
 
 RUN curl -s https://get.modular.com | sh -
-RUN conda run -n mojolang modular install mojo
+RUN conda run -n ${conda_env_name} modular install mojo
 
 # ENV MOJO_PATH=$(modular config mojo.path)
 # RUN BASHRC=$( [ -f "$HOME/.bash_profile" ] && echo "$HOME/.bash_profile" || echo "$HOME/.bashrc" ) \
@@ -46,13 +48,13 @@ RUN MOJO_PATH=$(modular config mojo.path) \
 
 # # Activate the ngsolve environment
 # SHELL ["/bin/bash", "--login", "-c"]
-ENV CONDA_PREFIX /opt/conda/envs/mojolang
+ENV CONDA_PREFIX /opt/conda/envs/${conda_env_name}
 ENV PATH $CONDA_PREFIX/bin:$PATH
-RUN echo "conda activate mojolang" >> ~/.bashrc
+RUN echo "conda activate ${conda_env_name}" >> ~/.bashrc
 # CMD ["/bin/bash"]
 
-## Install any additional packages you need in the mojolang environment
-# RUN conda install -n mojolang <package1> <package2> ... -y
+## Install any additional packages you need in the ${conda_env_name} environment
+# RUN conda install -n ${conda_env_name} <package1> <package2> ... -y
 
 # Set the working directory
 WORKDIR /workspaces/mojo-setup
