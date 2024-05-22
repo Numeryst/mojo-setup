@@ -30,7 +30,7 @@ RUN conda create -n mojolang python=3.10 -y
 # RUN conda run -n mojolang pip install jupyter numpy scipy matplotlib ipykernel
 
 RUN curl -s https://get.modular.com | sh -
-RUN conda run -n mojolang modular install nightly/mojo
+RUN conda run -n mojolang modular install mojo
 
 # ENV MOJO_PATH=$(modular config mojo.path)
 # RUN BASHRC=$( [ -f "$HOME/.bash_profile" ] && echo "$HOME/.bash_profile" || echo "$HOME/.bashrc" ) \
